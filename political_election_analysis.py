@@ -31,15 +31,15 @@ avg = pd.DataFrame(poll_df.mean(), columns=['AVG'])
 avg.drop(['Number of Observations', 'Question Iteration'], axis=0, inplace=True)
 
 # Standard deviation of all polls
-std = pd.DataFrame(poll_df.std(), columns=['STD DEV'])
+std = pd.DataFrame(poll_df.std(), columns=['STDEV'])
 std.drop(['Number of Observations', 'Question Iteration'], axis=0, inplace=True)
 
-# Bar graph plot of AVG and STD DEV
+# Bar graph plot of AVG and STDEV
 avg.plot(yerr=std, kind='bar', legend=False).set_title("Average of All Polls")
 
-# AVG and STD DEV of polls concatenated, and outputted
+# AVG and STDEV of polls concatenated, and outputted
 poll_avg = pd.concat([avg, std], axis=1)
-poll_avg.columns = ['ALL: AVG', 'ALL: STD DEV']
+poll_avg.columns = ['ALL: AVG', 'ALL: STDEV']
 print('\n')
 print(poll_avg)
 
@@ -72,15 +72,15 @@ lv_std.drop(['Number of Observations','Question Iteration', 'Difference'], axis=
 rv_avg.plot(yerr=std, kind='bar', legend=False, color='lightgreen').set_title("Poll Average: Registered Voters")
 lv_avg.plot(yerr=std, kind='bar', legend=False, color='green').set_title("Poll Average: Likely Voters")
 
-# AVG and STD DEV of RV polls concatenated and outputted
+# AVG and STDEV of RV polls concatenated and outputted
 rv_avg = pd.concat([rv_avg, rv_std], axis=1)
-rv_avg.columns = ['RV: AVG', 'RV: STD DEV']
+rv_avg.columns = ['RV: AVG', 'RV: STDEV']
 print('\n')
 print(rv_avg)
 
-# AVG and STD DEV of LV polls concatenated and outputted
+# AVG and STDEV of LV polls concatenated and outputted
 lv_avg = pd.concat([lv_avg, lv_std], axis=1)
-lv_avg.columns = ['LV: AVG', 'LV: STD DEV']
+lv_avg.columns = ['LV: AVG', 'LV: STDEV']
 print('\n')
 print(lv_avg)
 
