@@ -1,6 +1,10 @@
+#!/usr.bin.env python
+"""political_election_analysis.py: Visualizes polling data from HuffPost's aggregator."""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set_style('darkgrid')
 
 source = 'http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton.csv'
@@ -35,6 +39,7 @@ avg.plot(yerr=std, kind='bar', legend=False).set_title("Average of All Polls")
 # AVG and STD DEV of polls concatenated, and outputted
 poll_avg = pd.concat([avg, std], axis=1)
 poll_avg.columns = ['ALL: AVG', 'ALL: STD DEV']
+print('\n')
 print(poll_avg)
 
 # Adds 'Difference' column to dframe for the percentage margin between Clinton(+)/Trump(-)
@@ -69,11 +74,13 @@ lv_avg.plot(yerr=std, kind='bar', legend=False, color='green').set_title("Poll A
 # AVG and STD DEV of RV polls concatenated and outputted
 rv_avg = pd.concat([rv_avg, rv_std], axis=1)
 rv_avg.columns = ['RV: AVG', 'RV: STD DEV']
+print('\n')
 print(rv_avg)
 
 # AVG and STD DEV of LV polls concatenated and outputted
 lv_avg = pd.concat([lv_avg, lv_std], axis=1)
 lv_avg.columns = ['LV: AVG', 'LV: STD DEV']
+print('\n')
 print(lv_avg)
 
 # Groups dataframe by Start Date
@@ -107,5 +114,5 @@ for point in date_dict.keys():
     elif point == comey_letter:
         plt.axvline(x=date_dict[point], linewidth=4, color='red')
 
-
+# Displays Visualizations
 plt.show()
