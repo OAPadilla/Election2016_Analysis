@@ -7,6 +7,7 @@ import seaborn as sns
 
 sns.set_style('darkgrid')
 
+# Source of poll dataset is provided by the Huffington Post
 source = 'http://elections.huffingtonpost.com/pollster/2016-general-election-trump-vs-clinton.csv'
 poll_df = pd.read_csv(source)
 # print(poll_df.head())
