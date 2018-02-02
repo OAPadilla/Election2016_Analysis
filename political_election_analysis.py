@@ -15,9 +15,11 @@ poll_df = pd.read_csv(source)
 # Count of affiliated polls (None, Dem, Rep, Other)
 poll_affil = sns.factorplot('Affiliation', data=poll_df, aspect=1.25, kind='count')
 poll_affil.fig.suptitle("Poll Affiliations")
+
 # Count of population (Likely Voters, Registered Voters, Adults) for each affiliation polled
 lvrv_affil = sns.factorplot('Affiliation', data=poll_df, hue='Population', aspect=1.75, kind='count')
 lvrv_affil.fig.suptitle("LV and RV Poll Affiliations")
+
 # Types or 'Mode's of polling done
 poll_types = sns.factorplot('Mode', data=poll_df, aspect=1.75, kind='count')
 poll_types.fig.suptitle("Polling Methods")
@@ -44,7 +46,7 @@ print('\n')
 print(poll_avg)
 
 # Adds 'Difference' column to dframe for the percentage margin between Clinton(+)/Trump(-)
-poll_df['Difference'] = (poll_df.Clinton - poll_df.Trump) / 100
+poll_df['Difference'] = (poll_df.Clinton - poll_df.Trump) / 100  # FIXME
 
 # Compares average 'Difference' in polls between different 'Modes' of polling
 avg_mode_diff = sns.factorplot('Mode', 'Difference', aspect=2, data=poll_df)
@@ -57,6 +59,7 @@ lv_df = poll_df[poll_df.Population == 'Likely Voters']
 # Average of Registered Voter polls
 rv_avg = pd.DataFrame(rv_df.mean())
 rv_avg.drop(['Number of Observations','Question Iteration', 'Difference'], axis=0, inplace=True)
+
 # Standard deviation of Registered Voter polls
 rv_std = pd.DataFrame(rv_df.std())
 rv_std.drop(['Number of Observations','Question Iteration', 'Difference'], axis=0, inplace=True)
@@ -64,6 +67,7 @@ rv_std.drop(['Number of Observations','Question Iteration', 'Difference'], axis=
 # Average of Likely Voter polls
 lv_avg = pd.DataFrame(lv_df.mean())
 lv_avg.drop(['Number of Observations','Question Iteration', 'Difference'], axis=0, inplace=True)
+
 # Standard deviation of Likely Voter polls
 lv_std = pd.DataFrame(lv_df.std())
 lv_std.drop(['Number of Observations','Question Iteration', 'Difference'], axis=0, inplace=True)
@@ -93,7 +97,6 @@ date_means.set_title("Daily Polling Means: Differences Clinton(+)/Trump(-)")
 # Gathers rows of polls done from Sept to election day
 row_in = 0
 date_dict = {}  # { date : row# }
-
 for date in poll_df['Start Date']:
     if date[0:7] == '2016-09' or date[0:7] == '2016-10' or date[0:7] == '2016-11':  # Poll dates Sept-End
         date_dict[date] = row_in
