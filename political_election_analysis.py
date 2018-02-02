@@ -1,4 +1,4 @@
-#!/usr.bin.env python
+#!/usr/bin/env python
 """political_election_analysis.py: Visualizes polling data from HuffPost's aggregator."""
 
 import pandas as pd
