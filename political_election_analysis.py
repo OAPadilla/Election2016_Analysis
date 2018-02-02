@@ -47,7 +47,7 @@ print(poll_avg)
 
 # Adds 'Difference' column to dframe for the percentage margin between Clinton(+)/Trump(-)
 pd.options.mode.chained_assignment = None  # default='warn'
-poll_df['Difference'] = (poll_df.Clinton - poll_df.Trump) / 100  # FIXME
+poll_df['Difference'] = (poll_df.Clinton - poll_df.Trump) / 100
 
 # Compares average 'Difference' in polls between different 'Modes' of polling
 avg_mode_diff = sns.factorplot('Mode', 'Difference', aspect=2, data=poll_df)
