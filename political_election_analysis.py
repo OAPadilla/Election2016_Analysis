@@ -46,6 +46,7 @@ print('\n')
 print(poll_avg)
 
 # Adds 'Difference' column to dframe for the percentage margin between Clinton(+)/Trump(-)
+pd.options.mode.chained_assignment = None  # default='warn'
 poll_df['Difference'] = (poll_df.Clinton - poll_df.Trump) / 100  # FIXME
 
 # Compares average 'Difference' in polls between different 'Modes' of polling
